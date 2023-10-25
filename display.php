@@ -11,16 +11,18 @@
       include('conn.php');
       $query = "SELECT * FROM jobdetails";
       $result = mysqli_query($conn, $query);
+      $currentURL = $_SERVER['REQUEST_URI'];
+      echo "Current URL: $currentURL";
       
     
     ?>
 <div class="container">
     <div class="w-8/12 mx-auto">
-        <div class="w-2/12 mx-auto">
+        <!-- <div class="w-2/12 mx-auto">
             <button class="bg-green-500 hover:bg-green-700 text-white text-xs font-bold py-2 px-2">
                Green Button
             </button>
-        </div>
+        </div> -->
         <div class="bg-yellow-300 p-4 mt-4">
             <p class="text-center">MAIL PREVIEW</p>
 
@@ -30,7 +32,8 @@
     <div class="w-8/12 bg-yellow-100 mx-auto">
         <div class="w-3/12 mx-auto flex">
             <form action="source.php" method="post">
-          <button name="get_source" class=" mt-4 mb-4 bg-green-500 hover:bg-green-700 text-white text-xs font-bold  px-2 mr-2">
+              <input type="hidden" value="<?php echo  $currentURL; ?>" name="url">
+          <button name="get_source" type="submit" class=" mt-4 mb-4 bg-green-500 hover:bg-green-700 text-white text-xs font-bold  px-2 mr-2">
                SOURCE CODE
           </button>
           </form>
